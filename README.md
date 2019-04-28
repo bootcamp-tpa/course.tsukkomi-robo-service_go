@@ -1,1 +1,3 @@
-# course.tukkomi-robo-service_go
+# ツッコミロボ
+
+実行するには：

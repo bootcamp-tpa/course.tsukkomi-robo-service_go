@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-var options = [7]string{
+var options = []string{
 	"なんでやねん！",
 	"ありえん！",
 	"しょーもないなー",
@@ -16,24 +16,22 @@ var options = [7]string{
 	"あっち行け、馬鹿が移ったら困るから",
 	"アホたれ"}
 
-func getRandomTukkomi() string {
-	// To get a different series of numbers from rand.Intn,
-	// "seed" with the current time.
-	rand.Seed(time.Now().UnixNano())
+func getRandomTsukkomi() string {
 	randomNumber := rand.Intn(len(options))
 	return options[randomNumber]
 }
 
-func handleTukkomiPath(w http.ResponseWriter, r *http.Request) {
+func handleTsukkomi(w http.ResponseWriter, r *http.Request) {
 	phrase := r.URL.Query()["phrase"][0]
 	if len(phrase) > 0 {
-		fmt.Fprint(w, phrase+"って、"+getRandomTukkomi())
+		fmt.Fprint(w, phrase + "って、" + getRandomTsukkomi())
 	} else {
 		fmt.Fprint(w, "おい！ツッコムねぇじゃん")
 	}
 }
 
 func main() {
-	http.HandleFunc("/tukkomi", handleTukkomiPath)
+	rand.Seed(time.Now().UnixNano())
+	http.HandleFunc("/tsukkomi", handleTsukkomi)
 	http.ListenAndServe(":3001", nil)
 }

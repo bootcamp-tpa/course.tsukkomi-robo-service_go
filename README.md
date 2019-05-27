@@ -8,7 +8,7 @@ go run main.go
 
 [ツッコミロボ動画](https://www.youtube.com/watch?v=XTnjc0cWiko&feature=youtu.be)
 
-## タスク：APIルーターを実装しよう (server/router.js)
+## タスク：APIルーターを実装しよう (main.go)
 
 |Step|ステップ|
 |---|---|
